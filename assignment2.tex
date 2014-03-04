@@ -1,0 +1,60 @@
+\documentclass{acm_proc_10ptArticle-sp}
+
+\begin{document}
+
+\title{Assignment 2 - Social Web}
+
+\numberofauthors{3}
+\author{
+%
+% The command \alignauthor (no curly braces needed) should
+% precede each author name, affiliation/snail-mail address and
+% e-mail address. Additionally, tag each line of
+% affiliation/address with \affaddr, and tag the
+%% e-mail address with \email.
+\alignauthor Arthur-Ervin Avramiea\\
+       \affaddr{2517642}\\
+       \email{a.e.avramiea@student.vu.nl}
+\alignauthor Mihnea Dobrescu-Balaur\\
+	\affaddr{2549278}\\
+	\email{mihnea@linux.com}
+\alignauthor Kevin\\
+}
+
+\date{4 March 2014}
+\maketitle
+
+\section{The Web and Semantic markup}
+
+Much of a web developer's effort is geared towards providing the users with a rich, intuitive interface, that makes the information easy to find. However, most of the users' access to information on the web is nowadays mediated by search engines. The user enters a query and expects the search engine to provide him with websites that serve the content he is interested in. The search engine looks up for the string of text within the indexed database that resulted from web crawling. Nonetheless, textual representation of the information may differ between the different websites, and as and as such a lot of relevant data sources may not be identified. A solution to this issue is adding structure to the website content by annotating the text with metadata, in the lines of commonly accepted standards, which the search engine will be able to use to identify specific bits of data. This metadata tags the text that is to be presented to the user with its semantics, or meaning.In the end, the web developer's interest in making the information readable and easy to access for the user translates into an effort in making the information readable and easy to access for the search engines. 
+
+Several standards have been in use for the past years, among which RDFa, Microdata and Microformat\cite{bizer2013deployment}. Semantic markup technologies are adopted rapidly and on a wide scale, to the extent that, in 2013, 50\% of the most popular websites according to Alexa, embed some form of structured data. 
+
+TOADD: Microformat description and example
+
+TOADD: Microdata + schema.org descripiton and example
+
+\section{Websites}
+
+The dynamics of human interaction has obviously changed with the advent of the social web. And in the hectic rythm of our economy, we need to contact people, or find information about them more often. To be visible on the web, we need a form of presenting ourselves to the others, in the form of a social network account or personal website. It is useful, in this context, to structure the page(s) which contain contact details or other information which may be in the interest of somebody who searches for us, so that the search engine "knows" which information represents our telephone number, job position and company, etc. Not only does this help the search engine to point to such a page when somebody searches for a person, but it also helps the search engine website to provide with a summary of the individuals' information in the results, that is extracted by taking into account the specified metadata. This makes life easier for the search engine user - first of all, if the information which he looks for is already in the search engine, he does not need anymore to open the website and look for the information, second, because it allows the user to discriminate between different persons with the same name, before actually opening the web page. 
+
+Within these lines, we have chosen to annotate with semantic markup the personal website of Martin Fowler\footnote{http://martinfowler.com/aboutMe.html}, who has a diverse experience in the software industry, ranging from software engineer to training, authoring and consulting.  The web page provides with rich, albeit unstructured information about him. We chose to use the Microdata standard with Schema.org due to the rich semantics of the available schemas, that are able to represent a wide variety of aspects of a person. 
+
+
+\section{Publisher}
+
+\section{Conclusion}
+
+% The following two commands are all you need in the
+% initial runs of your .tex file to
+% produce the bibliography for the citations in your paper.
+\bibliographystyle{abbrv}
+\bibliography{assignment2}
+
+
+\appendix
+%Appendix A
+\section{Figures}
+
+
+\end{document}
