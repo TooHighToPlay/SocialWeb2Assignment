@@ -29,12 +29,14 @@
 
 \section{Discuss an existing analysis}
 
+
+During the recent years we have witnessed the explosion of the Web. It has become so popular that it is virtually omnipresent. Anywhere there is technology, you can find the Web. It is even on TVs. A big part of this evolution are the social networks - websites like Facebook, Twitter, MySpace etc. They allow people to easily communicate and share how they feel and what they are doing with their friends, and because of this, social websites (or their corresponding mobile apps) have become a part of most people's lives.
+
+Now that the growth is starting to (relatively) cool down, it is good to analyze the numbers and get a good understanding of the trends that surround social media. The report "\textbf{Where in the World Are the Hottest Social Networking Countries?}”\footnote{http://www.emarketer.com/Article/Where-World-Hottest-Social-Networking-Countries/1008870} by \textit{emarketer} examines the spread of social network users across countries and looks at the overall growth of the number of users of the Social Web around the world.     
+
 \subsection{About the data} 
-Report: http://www.emarketer.com/Article/Where-World-Hottest-Social-Networking-Countries/1008870
 
-\textbf{Where in the World Are the Hottest Social Networking Countries?}
-
-The report by \textit{emarketer} quantifies the use of social networking websites throughout the world, measuring their spread and predicting future numbers. 
+The \textit{emarketer} report quantifies the use of social networking websites throughout the world, measuring their spread and predicting future numbers. 
 
 There is data about Facebook users and Social Networking websites in general, on all devices, including mobile.
 
@@ -74,98 +76,31 @@ While the report includes social users from Asia and makes claims about users in
 
 \section{Analysis of the geography of media influence}
 
-Media, especially in the form of news sources, has a complex role in defining the way in which we perceive the side of the world that is near us, as well as the "other side" of the world. First of all, it can determine the priorities of the society, and influence our affinities. For example, as  \citeA{mccombs1972agenda} notes, the news media has a major influence on the topics around which a political campaign revolves. Second of all, news media can modulate our interest in specific national or international events \cite{wanta2004agenda}. Moreover, consumers judge the quality of the news by the extent to which the news meet their preconceptions and expectations\cite{gentzkow2005media}. 
+Media, especially in the form of news sources, has a complex role in defining the way in which we perceive the side of the world that is near us, as well as the "other side" of the world. First of all, it can determine the priorities of the society, and influence our affinities. For example, as  \citeA{mccombs1972agenda} notes that the news media has a major influence on the topics around which a political campaign revolves. Second of all, news media can modulate our interest in specific national or international events \cite{wanta2004agenda}. Moreover, consumers judge the quality of the news by the extent to which the news meet their preconceptions and expectations\cite{gentzkow2005media}. 
 
 In effect, the more homogenous the news sources to which a person is exposed, the less educated he/she may be about the topic. To resolve this issue, one can study various news sources when choosing which candidate to vote for in order to have a better impression of the advantages and disadvantages of each candidate choice. When one takes into account various international perspectives on external events, one may have a more complete and balanced image of the parties involved and the issues at stake. And even it involves an additional effort, reading news from sources that do not fit the individuals' preconceptions, or even contradict them, helps the individual understand the basis on which perspectives other than his own are grounded.
 
-With the increased usage of the internet, users have access to sources other than the local or national news at the tip of their fingers. In this context, our research question is whether internet users take advantage of this opportunity, and access news originating from different countries, when informing themselves on an international topic. Although we are aware that different news agencies from the same country may reflect different perspectives on the same topic, we use the simplifying assumption that in sum, the news sources in a country reflect the country's stance on the topic.
+With the increased usage of the internet, users have access to sources other than the local or national news at the tip of their fingers. In this context, our research question is whether internet users take advantage of this opportunity, and access news originating from different countries, when informing themselves on an international topic. Altough we are aware that a more 
 
-To study how internet users access news sources we have chosen a subject that has generated a lot of controversy in the past days, the tensions in Crimea following the 18-23 Ukrainian revolution \footnote{http://en.wikipedia.org/wiki/2014\_Ukrainian\_revolution}. We have chosen this subject because it is likely to be treated differently by the media in different countries, depending on each country's stance on, and interests in, Crimea and the Ukrainian revolution.
+Research hypothesis - for a topic related to a country - citizens from the country tend to get informed from local news. people from outside the country use more sources. (to find article) does this also hold for the new media?
 
-\subsection{Data acquisition}
+Describe data collection, and representation
 
-We have monitored the tweets which mention the keyword "crimea", using the Twitter Streaming API, over a time frame of 16 hours, between 12 and 13 March 2014, for a total of ~50.000 tweets on the subject. We needed to be able to associate each tweet to the country in which the user is located. Only a few of the tweets are tagged with an exact location. Where that field was not available, we used the user's location, when that was specified. An issue is that the user location field is not very exact - the user can specify any string of characters to describe his location: "Portland, OR, United States" (which points to an actual location) or "Around you" (as ambiguous as it can get). We used the Google Places text search API to extract the location from this text (if it was possible). Although this approach is not the most accurate, we think it suffices for the purposes of this work. We were able to extract the country for 20.786 tweets, which we used afterwards in our analysis.
+Describe data analysis performed
 
-For each tweet we were interested by the following information: the tweet's text(to be used for sentiment analysis), the urls to which the tweet refers (to analyse the news sources) and the user's location. 
-
-From Twitter, for each tweet, we received a lot of unneeded information: 
-
-\begin{verbatim}
-{
-    \\info about tweet
-    "text": "Vice News has some of the most 
-		compelling footage from Ukraine 
-		and Crimea. Just fascinating. 
-		https://t.co/Qp5nNb6q0I",
-    "id": ...,
-    "favorite_count": 0,
-    "entities": {
-        \\info about other entities
-        "urls": [
-            {
-               \\info about urls
-               "expanded_url": "...",
-            }
-        ]
-    },
-    "user": {
-        "location":"Olympia",
-        \\information about the user
-    },
-    ...
-    "place": null
-}
-\end{verbatim}
-
-For each place, we got from the Google Places API the following information: 
-\begin{verbatim}
-{
-    "Batam, Indonesia": {
-        "geo_location": {
-            "lat": 1.0456264,
-            "lng": 104.0304535
-        },
-        "address": "Batam, Riau Islands, 
-                         Indonesia"
-    }
-}
-\end{verbatim}
-
-From this, we have extracted the country from the last part of the address.
-
-In order to assess the country for a news source, we have used the country top level domain list\footnote{http://en.wikipedia.org/wiki/List\_of\_Internet\_top-level\_domains}. The rest of the websites, with non-national domain names (.com, .org, .info etc) were classified by hand (only the most popular ones). 
-
-Integrating this data for each tweet results in the following data representation, that fits the purposes of our analysis, and in which we have the location of the tweeter and the location of each url referred in the tweet:
-
-\begin{verbatim}
- {
-    "text": "Russia's 25,000-troop...",
-    "urls": [
-        {
-            "url": "http://rt.com/news/r...",
-            "country_code": "RU"
-        }
-    ],
-    "country_code": "SK"
-}
-\end{verbatim}
-
-\subsection{Analysis of the data}
-
-
+Describe results
 
 - tweets by country
-
-- tweets by country (first 5)
-
-It is worthy to note that except for USA (which has a large population), and Ukraine (directly involved in the issue), among the top tweeting countries we have Canada, United Kingdom, and Spain. 
 
 - percentage of local media focus
 
 - main parties involved - which are the media sources
 
+- media heterogeneity (to define a measure)
+
 Limitations - the use of different country sources may reflect immigrants, especially when speaking less "popular" languages, probably better to delineate between news agencies, international news agencies etc
 
+\section{Conclusions} 
 
 % The following two commands are all you need in the
 % initial runs of your .tex file to
@@ -175,6 +110,3 @@ Limitations - the use of different country sources may reflect immigrants, espec
 
 
 \end{document}
-
-
-
