@@ -20,7 +20,7 @@
 	\affaddr{2549278}\\
 	\email{mihnea@linux.com}
 \alignauthor Zilvinas Kucinskas\\
-	\affaddr{zks300}\\
+	\affaddr{2547940}\\
         \email{zil.kucinskas@gmail.com}
 }
 
@@ -151,27 +151,82 @@ Integrating this data for each tweet results in the following data representatio
 
 \subsection{Analysis of the data}
 
-As you can see in ........................ the countries from which the highest numbers of tweets originate are: USA(8022), United Kingdom (1698), Ukraine(1089), Spain(1057) and Canada(896). USA is present in the top due to its large number of tweeter users and of news agencies. Ukraine is the hot spot, so no wonder that we find it in the top. However, the other 3 countries share something in common with Ukraine - they all have debates regarding the separation of a region from the country, as it is the case now for Crimea in Ukraine. Independence processes are undergoing for Catalonia in Spain\footnote{http://www.catalannewsagency.com/politics/item/the-new-york-times-editorial-catalan-secession-claims-are-legitimate-not-like-crimea-s}, Quebec in Canada, and Scotland in UK\footnote{http://en.wikipedia.org/wiki/Scottish\_independence\_ referendum,\_2014}.
+As you can see in Fig. \ref{fig:toptweets} the countries from which the highest numbers of tweets originate are: USA(8022), United Kingdom (1698), Ukraine(1089), Spain(1057) and Canada(896). USA is present in the top due to its large number of tweeter users and of news agencies. Ukraine is the hot spot, so no wonder that we find it in the top. However, the other 3 countries share something in common with Ukraine - they all have debates regarding the separation of a region from the country, as it is the case now for Crimea in Ukraine. Independence processes are undergoing for Catalonia in Spain\footnote{http://www.catalannewsagency.com/politics/item/the-new-york-times-editorial-catalan-secession-claims-are-legitimate-not-like-crimea-s}, Quebec in Canada, and Scotland in UK\footnote{http://en.wikipedia.org/wiki/Scottish\_independence\_ referendum,\_2014}.
 
-Our main question concerns which news sources do internet users access - local(national) news or international news. For this, we have computed the local news access index (LNAI) - which for each country, is computed as the percentage of local(national) websites mentioned in the tweets of users from that country, in all the websites mentioned by the same users. In ..... you can see a map of the local news access index. The highest values for LNAI (eliminating countries with less than 10 tweets) were found in Spain (0.44), Italy(0.39), Russia (0.38). This shows the preponderence of local media in these countries. However, this does not completely describe the influence of the local media in those countries, as users may have other reasons for not accessing external sources - such us the fact that they do not speak a foreign language. 
+Our main question concerns which news sources do internet users access - local(national) news or international news. For this, we have computed the local news access index (LNAI) - which for each country, is computed as the percentage of local(national) websites mentioned in the tweets of users from that country, in all the websites mentioned by the same users. In Fig. \ref{fig:mediacoverage} you can see a map of the local news access index. The highest values for LNAI (eliminating countries with less than 10 tweets) were found in Spain (0.44), Italy(0.39), Russia (0.38). This shows the preponderence of local media in these countries. However, this does not completely describe the influence of the local media in those countries, as users may have other reasons for not accessing external sources - such us the fact that they do not speak a foreign language. 
 
-Interestingly, LNAI for Ukraine is small(0.23), where users access, in 
+Interestingly, LNAI for Ukraine is small(0.23), and although users mostly access news sources from Ukraine and Russia, not a few users are watching the news from USA (Fig. \ref{fig:sources_ukraine}) .
 
-\subsection{Limitations of the study}
-Ukrainians in US etc - however, possibility, opportunity, which is taken advantage of
+The LNAI for USA is also small, with only 17\% of the references made to local news. The rest of it reflects the ethnic diversity in the USA, as well as the broad coverage of external news in US media (Fig. \ref{fig:sources_usa}) . 
 
-Different types of users vs same users
+On the other side of the spectrum, as we have already mentioned, we have countries like Russia, with a preponderence of local media on the subject, seconded by USA and then Ukraine \ref{fig:sources_russia}.
 
-Limitations - the use of different country sources may reflect immigrants, especially when speaking less "popular" languages, probably better to delineate between news agencies, international news agencies etc
+We have also performed a sentiment analysis of the tweets, using the sentiment140 API\footnote{http://www.sentiment140.com/}. The results for each country can be found on the map \ref{fig:sentimentmap} . The sentiment score was computed by summing the tweets with negative polarity (multiplied by -1) with the tweets with positive polarity (multiplied by 1), and dividing this by the total number of tweets originating in each country. The result was then rescaled from 0 to 10, where 0 means negative polarity, 5 neutral, and 10 positive. We expected to find heterogeneity in the emotional content that surrounds the subjects. However, the results are quite homogenous - for most of the countries, the overall score was neutral, and the rest is noise, due to the small number of tweets. 
 
 \subsection{Conclusions}
 
+A first issue that we encountered was that of identifying the country to which a news source belongs. Some urls which did not have a national top level domain were left out because we did not have the time to manually classify them. For future studies it would be useful to identify lists of news agencies and their details, and automatize the process of country identification, whenever possible. 
+
+Overall, our intention was to see whether internet users access news from multiple sources. Although in many countries we could see a heterogenous set of data sources, this heterogenous data set is more likely to represent different subsets of the population which take their information from different sources, rather than one individual with a broad coverage of the media. In that case, this would unravel the heterogeneity of the population with regard to the news sources that are used. A further study should take this analysis to a deeper, individual level, and assess the extent to which users access a heterogenous set of news sources. 
+
+We need to also take into account that the average Twitter user may not be representative for the rest of the internet users population. For example - Twitter users may be more exposed to disparate news sources, and hence be more likely to access them. As such, the observations and conclusions should not be generalized to the rest of the population. 
+
+With regard to the sentiment analysis, as you could see, the results were quite homogenous. There are several possible reasons for this finding. First of all, the query may have been too general ("crime") - a more specific query like "putin crimea" could have reflected a more polarized view. Second, the percentage of tweets with emotion was quite small (at most 10\% of the tweets), and for countries with a small number of tweets, it may not have been enough to properly describe the overall sentiment. Moreover, our metric divides the sum of positive and negative tweets to the total number of tweets. Given the small percentage of polarized tweets, this results in an inherently neutral score. We would need to find a better metric to properly reflect the overall sentiment. 
+
+All in all, we consider that our study gives an answer to the research question. The user of the internet has access to multiple news sources and takes advantage of this opportunity. However, deeper analyses may prove useful in describing the intricacies of the news browsing behavior. Moreover, analyses that take into account the globalization of news media can uncover the influence that a certain event has on other places and peoples. An example is the report in the news of the possible separation of Crimea, which spawns debates in countries like Canada, UK, Spain, that are discussing the possible separation of certain regions. 
 
 % The following two commands are all you need in the
 % initial runs of your .tex file to
 % produce the bibliography for the citations in your paper.
 \bibliographystyle{abbrv}
 \bibliography{assignment3}
+
+\newpage
+
+%Appendix A
+\onecolumn
+\section{Appendix}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{crimea_tweets.png}
+	\caption{Top tweets about crimea}
+	\label{fig:toptweets}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{media_coverage.png}
+	\caption{Media coverage - for each country, the percentage of local media mentions, in the total number of tweet url mentions}
+	\label{fig:mediacoverage}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{topMentionsInUkraine.jpeg}
+	\caption{News sources mentioned in tweets originating from Ukraine}
+	\label{fig:sources_ukraine}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{topMentionsInUSA.jpeg}
+	\caption{News sources mentioned in tweets originating from USA}
+	\label{fig:sources_usa}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{topMentionsInRussia.jpeg}
+	\caption{News sources mentioned in tweets originating from Russia}
+	\label{fig:sources_russia}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{crimea_sentiment.png}
+	\caption{Sentiment analysis}
+	\label{fig:sentimentmap}
+\end{figure}
 
 
 \end{document}
